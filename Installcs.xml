@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CVInstallManager_ClientSetup Focus="New" JobID="0" OEMID="1" Operationtype="0">
+	<CommServeInfo>
+		<CommserveHostInfo _type_="3" clientName="" hostName=""/>
+	</CommServeInfo>
+	<Dialogs name="LaunchSQLInstall" show="0"/>
+	<Dialogs name="ShowAddProgramsToFirewallExclusionList" show="0"/>
+	<Dialogs name="ShowDestinationPathDialog" show="0"/>
+	<Dialogs name="ShowDataFileInstallPathDialog" show="0"/>
+	<Dialogs name="ShowExpressRecoveryPathDialog" show="0"/>
+	<Dialogs name="ShowSQLUserPasswordDialog" show="0"/>
+	<Dialogs name="ShowCommcellAccountInfoDialog" show="0"/>
+	<Dialogs name="ShowSoftwareCacheSetupDialog" show="0"/>
+	<Dialogs name="ShowFTPCacheDialog" show="0"/>
+	<User _type_="13" userId="1"/>
+	<clientComposition activateClient="1" packageDeliveryOption="0">
+		<clientInfo>
+			<client cvdPort="8400" evmgrcPort="8402" installDirectory="">
+				<clientEntity _type_="3" clientName="" hostName=""/>
+				<osInfo Type="Windows" osId="313"/>
+			</client>
+			<clientGroups _type_="28" clientGroupName=""/>
+			<clientProps enableAccessControl="0"/>
+		</clientInfo>
+		<components>
+			<commcellConsole configureWebAlias="1"/>
+			<commonInfo RequestedbyReleaseLicAtClientLevel="0" globalFilters="2" storageOrSubclientPolicy="1" useExistingStoragePolicy="1"/>
+			<commserve>
+				<csdbInfo setupSoftwareCache="1">
+					<CommCellUser password="3cfe3eeb854e8aa64e0155bec019674d5" userName="admin"/>
+					<ERPath path="C:\CSDR"/>
+					<FTPLocation path="">
+						<userAccount password="" userName=""/>
+					</FTPLocation>
+				</csdbInfo>
+			</commserve>
+			<componentInfo ComponentId="1" ComponentName="File System Core" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="20" ComponentName="CommServe" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="801" ComponentName="Commserve DB" _type_="60" clientSidePackage="1" consumeLicense="1"/>
+			<componentInfo ComponentId="802" ComponentName="SRM services DB" _type_="60" clientSidePackage="1" consumeLicense="1"/>
+			<componentInfo ComponentId="701" ComponentName="Commcell Console" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="51" ComponentName="MediaAgent" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="702" ComponentName="File System" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="252" ComponentName="Web Server" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="803" ComponentName="DM2 Web services DB" _type_="60" clientSidePackage="1" consumeLicense="1"/>
+			<componentInfo ComponentId="453" ComponentName="VSS Provider" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="23" ComponentName="Workflow Engine" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="808" ComponentName="Workflow Engine DB" _type_="60" clientSidePackage="1" consumeLicense="1"/>
+			<componentInfo ComponentId="259" ComponentName="Search Advanced Document Type Support" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<componentInfo ComponentId="726" ComponentName="Web Console" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
+			<dm2WebService apachePortNumber="80" dm2WebSitePort="81" searchSvcWebAlias="SearchSvc" xmlViewWebAlias="xmlview">
+				<sqlServerInfo sqlServerName="HOSTNAME\Commvault"/>
+			</dm2WebService>
+			<mediaAgent/>
+			<webConsole webConsolePort="80" webConsoleURL="http://HOSTNAME:80/webconsole/clientDetails/fsDetails.do?clientName=CLIENTNAME" webServerClientId="HOSTNAME" webURL="http://HOSTNAME:80/webconsole"/>
+		</components>
+	</clientComposition>
+	<installFlags addToFirewallExclusion="1" autoRegister="0" deletePackagesAfterInstall="0" disableOSFirewall="0" forceReboot="0" ignoreJobsRunning="0" install32Base="0" install64Base="0" installLatestServicePack="1" killBrowserProcesses="0" overrideClientInfo="0" preferredIPFamily="1" restoreOnlyAgents="0" showFirewallConfigDialogs="0" stopOracleServices="0" unixGroupAccess="7" unixOtherAccess="7" upgradeMode="0" useNewOS="0">
+		<sqlInstall>
+			<sqlSaUserAccount password="36ba4764c3b1b436791768787ba93b39c86c84f9a673bd7bc"/>
+		</sqlInstall>
+	</installFlags>
+</CVInstallManager_ClientSetup>
