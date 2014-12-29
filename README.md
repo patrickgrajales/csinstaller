@@ -7,11 +7,13 @@ csinstaller: CommServe Installer using Vagrant
   * Install Windows on a newly created Virtualbox system (I'd say use 40GB as your primary HDD)
   * Install all of the Guest Additions
   * Follow as:
+```
     C:\>winrm quickconfig -q
     C:\>winrm set winrm/config/winrs @{MaxMemoryPerShellMB="300"}
     C:\>winrm set winrm/config @{MaxTimeoutms="1800000"}
     C:\>winrm set winrm/config/service @{AllowUnencrypted="true"}
     C:\>winrm set winrm/config/service/auth @{Basic="true"}
+```
   * Make sure you enable RDP and relevant Firewall, IE ESC, etc...
   * Make sure the Administrator password is something simple (you can change it once it's been provisioned, don't worry)
   * Shutdown the VM
