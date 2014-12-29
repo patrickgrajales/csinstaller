@@ -5,7 +5,7 @@ $UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8
 
 # We're mapping the SMB share with the CommVault Slipstream media - Currently SP9
 # We also install .NET 3.5, 4.0 and ISS along with Disabling Windows Update that you may choose to enable if you wish
-net use Z: \\192.168.1.100\public /user:smbguest smbguest /p:no | Out-Default
+net use Z: \\share\public /user:smbguest smbguest /p:no | Out-Default
 Import-Module ServerManager
 Add-WindowsFeature as-net-framework
 Add-WindowsFeature -Name Web-Common-Http,Web-Asp-Net,Web-Net-Ext,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Http-Logging,Web-Request-Monitor,Web-Basic-Auth,Web-Windows-Auth,Web-Filtering,Web-Performance,Web-Mgmt-Console,Web-Mgmt-Compat,RSAT-Web-Server,WAS -IncludeAllSubFeature
