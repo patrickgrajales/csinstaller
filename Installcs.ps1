@@ -15,5 +15,5 @@ New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name WindowsUpdate
 New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name AU
 New-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name NoAutoUpdate -Value 1
 start-process Z:\Simpana\v10\Common\Bin\DotNetFramework\4.0\dotNetFx40_Full_x86_x64.exe -ArgumentList '/q' -Wait -verb RunAs | Out-Default
-start-process Z:\Simpana\v10\WinX64\Setup.exe -ArgumentList '/silent /info /play "C:\Users\Administrator\Installcs.xml"' -verb RunAs -Wait | Out-Default
+start-process Z:\Simpana\v10\WinX64\Setup.exe -ArgumentList '/silent /play "C:\Users\Administrator\Installcs.xml"' -verb RunAs -Wait | Out-Default
 net use Z: /delete /Y | Out-Default
