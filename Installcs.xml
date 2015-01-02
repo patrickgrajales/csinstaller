@@ -49,10 +49,10 @@
 			<componentInfo ComponentId="259" ComponentName="Search Advanced Document Type Support" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
 			<componentInfo ComponentId="726" ComponentName="Web Console" _type_="60" clientSidePackage="1" consumeLicense="1" osType="Windows"/>
 			<dm2WebService apachePortNumber="80" dm2WebSitePort="81" searchSvcWebAlias="SearchSvc" xmlViewWebAlias="xmlview">
-				<sqlServerInfo sqlServerName="HOSTNAME\Commvault"/>
+				<sqlServerInfo sqlServerName="CHANGEHOSTNAME\Commvault"/>
 			</dm2WebService>
 			<mediaAgent/>
-			<webConsole webConsolePort="80" webConsoleURL="http://HOSTNAME:80/webconsole/clientDetails/fsDetails.do?clientName=CLIENTNAME" webServerClientId="HOSTNAME" webURL="http://HOSTNAME:80/webconsole"/>
+			<webConsole webConsolePort="80" webConsoleURL="http://CHANGEHOSTNAME:80/webconsole/clientDetails/fsDetails.do?clientName=CLIENTNAME" webServerClientId="CHANGEHOSTNAME" webURL="http://CHANGEHOSTNAME:80/webconsole"/>
 		</components>
 	</clientComposition>
 	<installFlags addToFirewallExclusion="1" autoRegister="0" deletePackagesAfterInstall="0" disableOSFirewall="0" forceReboot="0" ignoreJobsRunning="0" install32Base="0" install64Base="0" installLatestServicePack="1" killBrowserProcesses="0" overrideClientInfo="0" preferredIPFamily="1" restoreOnlyAgents="0" showFirewallConfigDialogs="0" stopOracleServices="0" unixGroupAccess="7" unixOtherAccess="7" upgradeMode="0" useNewOS="0">
