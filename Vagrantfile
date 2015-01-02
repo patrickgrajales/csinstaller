@@ -1,5 +1,15 @@
 # -*- mode: ruby -*-
-# vi: set ft=ruby :
+# vi:set ts=2 sw=2 ft=ruby et:
+require './vagrant-provision-reboot-plugin'
+
+# Setting any custom variables
+$newhostname = "test-windows"
+$script = <<SCRIPT
+Get-Content C:\\Users\\Administrator\\Installcs_template.xml | ForEach-Object { $_ -replace \"CHANGEHOSTNAME\", \"#{$newhostname}\"} | Set-Content C:\\Users\\Administrator\\Installcs.xml
+$computername = Get-WmiObject Win32_ComputerSystem
+$computername.Rename(\"#{$newhostname}\")
+SCRIPT
+
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -11,17 +21,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "w2k8_r2_base"
-  config.vm.hostname = "HOSTNAME"
   config.vm.communicator = "winrm"
-  config.vbguest.auto_update = false
-  config.vm.boot_timeout = 1800
-  config.vm.provision "file", source: "Installcs.xml", destination: "Installcs.xml"
-  config.vm.provision "file", source: "Installcs.ps1", destination: "Installcs.ps1"
+  config.winrm.timeout = 3600
   config.winrm.username = "Administrator"
   config.winrm.password = "vagrant"
+  config.vm.provider :esxi do |esxi|
+    esxi.name = "#{$newhostname}"
+    esxi.host = "192.168.1.200"
+    esxi.srcds = "datastore2"
+    esxi.dstds = "datastore1"
+    esxi.user = "root"
+  end
+  config.vm.provision "file", source: "Installcs.xml", destination: "Installcs_template.xml"
+  config.vm.provision "file", source: "Installcs.ps1", destination: "Installcs.ps1"
+  config.vm.provision "shell", inline: $script
+  config.vm.provision :windows_reboot
   config.vm.provision "shell", path: "Installcs.cmd"
   # config.vm.synced_folder '.', '/vagrant', disabled: true
-  config.vm.synced_folder '.', '/vagrant', disabled: true
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -32,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 3389, host: 33389
+  # config.vm.network "forwarded_port", guest: 3389, host: 33389
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -41,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network"
+  # config.vm.network "public_network"
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
