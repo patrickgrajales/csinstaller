@@ -22,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "w2k8_r2_base"
   config.vm.communicator = "winrm"
+  config.vm.guest = :windows
   config.winrm.timeout = 3600
   config.winrm.username = "Administrator"
   config.winrm.password = "vagrant"
